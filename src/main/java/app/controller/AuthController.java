@@ -43,14 +43,14 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute RegisterUserModel model, HttpSession session) throws  Exception {
+    public ModelAndView login(@ModelAttribute RegisterUserModel model, HttpSession session) throws  Exception {
         RegisterUserServiceModel serviceModel = mapper.map(model, RegisterUserServiceModel.class);
         try {
             authService.login(serviceModel);
             session.setAttribute("username", serviceModel.getUsername());
-            return "redirect:/";
+            return new ModelAndView("redirect:/");
         }catch(Exception ex) {
-            return "login";
+            return new ModelAndView("login");
         }
     }
 }

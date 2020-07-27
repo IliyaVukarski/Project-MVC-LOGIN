@@ -1,31 +1,33 @@
 
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Heroes</title>
+        <title>LOGIN</title>
         <link rel="stylesheet" type="text/css" href="/static/css/reset-css.css">
         <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="/css/style.css">
 <body>
     <header>
         <nav class="navbar bg-dark navbar-expand-lg navbar-background bg-dark ">
-            <a class="navbar-brand text-white h4" href="/">Heroes</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
                 <ul class="navbar-nav row">
-                    <li class="nav-item col-md-4">
+                    <li class="nav-item col-md-3">
                         <a class="nav-link text-white active h5" href="/">Home</a>
                     </li>
-                    <li class="nav-item col-md-4">
+                    <li class="nav-item col-md-3">
                         <a class="nav-link text-white active h5" href="/users/login">Login</a>
                     </li>
-                    <li class="nav-item col-md-4">
+                    <li class="nav-item col-md-3">
                         <a class="nav-link text-white active h5" href="/users/register">Register</a>
+                    </li>
+                    <li class="nav-item col-md-3">
+                        <a class="nav-link text-white active h5" href="/">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -35,18 +37,23 @@
     <div class="container">
         <h1>Welcome to Demo Log in Page</h1>
         <hr class="my-3"/>
-        <p class="h4">The most furious arena on the web</p>
-        <p class="h4">You will find many strong enemies but only the best will survive</p>
+        <p class="h4">This is Spring mvc Demo</p>
         <hr class="my-3"/>
-        <h3><a href="/users/login">Login</a> if you have an account or
-            <a href="/users/register">Register</a> now and meet the greatest heroes of all time.
+        <h3>
+            <div th:if="${session.username == null}">
+                <a href="/users/login">Login</a> if you have an account or
+                <a href="/users/register">Register</a>
+            </div>
+            <div th:unless="${session.username == null}">
+                <a class="nav-link text-white active h5" href="/users/login">User Logged</a>
+            </div>
         </h3>
     </div>
 </main>
     <footer class="footer bg-dark  py-2">
         <div class="container-fluid text-center">
             <div class="footer-background h5 text-white">
-                &#169; CopyRight Victorious Arena. All rights reserved.
+                &#169; Login Page MVC Spring
             </div>
         </div>
     </footer>
